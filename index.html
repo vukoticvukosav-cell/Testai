@@ -1,10 +1,24 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Moj Sajt</title>
-</head>
 <body>
-    <h1>Pozdrav svima!</h1>
-    <p>Ovo je moja prva besplatna stranica na GitHub-u.</p>
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        // Using claude-haiku-4-5 model
+        puter.ai.chat(
+            "Write a short poem about coding",
+            { model: "claude-haiku-4-5" }
+        ).then(response => {
+            puter.print("<h2>Using claude-haiku-4-5 model</h2>");
+            puter.print(response.message.content[0].text);
+        });
+
+        // Using claude-opus-4-6 model
+        puter.ai.chat(
+            "Write a short poem about coding",
+            { model: "claude-opus-4-6" }
+        ).then(response => {
+            puter.print("<h2>Using claude-opus-4-6 model</h2>");
+            puter.print(response.message.content[0].text);
+        });
+    </script>
 </body>
 </html>
