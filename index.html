@@ -1,26 +1,17 @@
 <html>
 <body>
-
-     <head>Stefane probaj ovo </head>
     <script src="https://js.puter.com/v2/"></script>
     <script>
-        // Using claude-haiku-4-5 model
-        puter.ai.chat(
-            "how create css snimation",
-            { model: "claude-haiku-4-5" }
-        ).then(response => {
-            puter.print("<h2>Using claude-haiku-4-5 model</h2>");
-            puter.print(response.message.content[0].text);
-        });
-
-        // Using claude-opus-4-6 model
-        puter.ai.chat(
-            "daj mi primer css coda za krug crven. odgovori mi na srpskom jeziku",
-            { model: "claude-opus-4-6" }
-        ).then(response => {
-            puter.print("<h2>Using claude-opus-4-6 model</h2>");
-            puter.print(response.message.content[0].text);
-        });
+        (async () => {
+            const response = await puter.ai.chat(
+                "napisi mi css kod za crveninkvadrat podeljen po dijagonsli i lepo mi objasni da bude pregledno", 
+                {model: 'claude-sonnet-4-6', stream: true}
+            );
+            
+            for await (const part of response) {
+                puter.print(part?.text);
+            }
+        })();
     </script>
 </body>
 </html>
